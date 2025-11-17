@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><title>2024년 3분기 디지털 서비스 운영 현황</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #1f4b99;
+        --accent: #f4b400;
+        --border: #d9e2ef;
+        --bg: #f7f9fc;
+        --text: #203040;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: 'Noto Sans KR', 'Segoe UI', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+    }
+    header {
+        background: white;
+        border-bottom: 4px solid var(--primary);
+        padding: 32px 48px;
+    }
+    header h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+    }
+    header p {
+        margin: 4px 0;
+        color: #4d5d72;
+    }
+    main {
+        padding: 32px 48px;
+    }
+    section {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+    }
+    h2 {
+        margin-top: 0;
+        color: var(--primary);
+        font-size: 22px;
+    }
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+    }
+    .card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px;
+        background: var(--bg);
+    }
+    .card span.label {
+        font-size: 14px;
+        color: #6b7a90;
+    }
+    .card span.value {
+        display: block;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 12px;
+    }
+    th, td {
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+        text-align: center;
+        font-size: 14px;
+    }
+    th {
+        background: #eef3fb;
+        font-weight: 600;
+    }
+    ul {
+        padding-left: 20px;
+        margin: 0;
+    }
+    li {
+        margin-bottom: 6px;
+    }
+    .footnote {
+        font-size: 12px;
+        color: #6b7a90;
+        margin-top: 12px;
+    }
+    .chart-wrapper {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+</style>
+</head><body><header><h1>2024년 3분기 디지털 서비스 운영 현황</h1><p>작성일: 2024년 11월 15일</p><p>문서번호: GOV-DS-20251114</p></header><main><section><h2>1. 핵심 지표 요약</h2><div class="summary-grid"><div class="card"><span class="label">총 서비스 수</span><span class="value">156 건</span></div><div class="card"><span class="label">신규 서비스</span><span class="value">12 건</span></div><div class="card"><span class="label">개선 완료</span><span class="value">34 건</span></div><div class="card"><span class="label">평균 만족도</span><span class="value">4.2 점</span></div></div></section><section><h2>2. 부처별 운영 현황</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>부서</th>
+                <th>제공 서비스</th>
+                <th>이용자 수</th>
+                <th>만족도</th>
+                <th>집행 예산(%)</th>
+            </tr>
+        </thead>
+        <tbody>
+    <tr><td>행정안전부</td><td>23</td><td>1,250,000</td><td>4.3</td><td>87.5</td></tr><tr><td>과학기술정보통신부</td><td>18</td><td>890,000</td><td>4.5</td><td>92.3</td></tr><tr><td>보건복지부</td><td>31</td><td>3,450,000</td><td>3.9</td><td>78.4</td></tr></tbody></table></section><section><h2>3. 월별 이용 추이</h2><div class="chart-wrapper"><canvas id="monthlyChart" height="320"></canvas></div>
+    <table>
+        <thead>
+            <tr>
+                <th>월</th>
+                <th>이용자 수</th>
+                <th>서비스 수</th>
+            </tr>
+        </thead>
+        <tbody>
+    <tr><td>7월</td><td>4,500,000</td><td>144</td></tr><tr><td>8월</td><td>4,750,000</td><td>148</td></tr><tr><td>9월</td><td>5,100,000</td><td>156</td></tr></tbody></table></section><section><h2>4. 주요 이슈</h2><ul><li>서버 과부하 3차 발생</li><li>보안 업데이트 필요</li><li>모바일 최적화 개선 요구</li></ul></section><section><h2>5. 향후 조치 계획</h2><ul><li>클라우드 인프라 확장</li><li>AI 챗봇 시범 도입</li><li>이용자 인증 UX 개선</li></ul><p class="footnote">※ 본 문서는 내부 검토용 공문서 형식을 따릅니다.</p></section></main><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script>const monthlyData = [{"month": "7월", "users": 4500000, "services": 144}, {"month": "8월", "users": 4750000, "services": 148}, {"month": "9월", "users": 5100000, "services": 156}];
+const labels = monthlyData.map(item => item.month);
+const userData = monthlyData.map(item => item.users);
+const serviceData = monthlyData.map(item => item.services);
+const ctx = document.getElementById('monthlyChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels,
+        datasets: [
+            { label: '이용자 수', data: userData, backgroundColor: 'rgba(31,75,153,0.7)', yAxisID: 'y' },
+            { label: '서비스 수', data: serviceData, type: 'line', borderColor: '#f4b400', backgroundColor: '#f4b400', yAxisID: 'y1' }
+        ]
+    },
+    options: {
+        responsive: true,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            y: { beginAtZero: true, position: 'left', ticks: { callback: value => value.toLocaleString() } },
+            y1: { beginAtZero: true, position: 'right', grid: { drawOnChartArea: false } }
+        }
+    }
+});</script></body></html>

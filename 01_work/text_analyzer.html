@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 분석기 - Text Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 텍스트 분석기</h1>
+            <p class="subtitle">한글/영문 텍스트 통계 정보 추출</p>
+        </header>
+
+        <div class="upload-section">
+            <label for="fileInput" class="file-label">
+                <span class="icon">📁</span>
+                <span class="text">텍스트 파일 선택</span>
+            </label>
+            <input type="file" id="fileInput" accept=".txt" class="file-input">
+            <p class="file-name" id="fileName">선택된 파일 없음</p>
+        </div>
+
+        <div class="text-input-section">
+            <h3>또는 직접 텍스트 입력</h3>
+            <textarea id="textInput" placeholder="분석할 텍스트를 입력하세요..."></textarea>
+            <button id="analyzeBtn" class="analyze-btn">분석하기</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h2>📈 분석 결과</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-content">
+                        <h3>총 문자 수</h3>
+                        <p class="stat-value" id="charCount">0</p>
+                        <span class="stat-detail">공백 포함</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔤</div>
+                    <div class="stat-content">
+                        <h3>문자 수 (공백 제외)</h3>
+                        <p class="stat-value" id="charCountNoSpace">0</p>
+                        <span class="stat-detail">실제 문자만</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📖</div>
+                    <div class="stat-content">
+                        <h3>단어 수</h3>
+                        <p class="stat-value" id="wordCount">0</p>
+                        <span class="stat-detail">한글/영문 단어</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📄</div>
+                    <div class="stat-content">
+                        <h3>문장 수</h3>
+                        <p class="stat-value" id="sentenceCount">0</p>
+                        <span class="stat-detail">완전한 문장</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🇰🇷</div>
+                    <div class="stat-content">
+                        <h3>한글 문자</h3>
+                        <p class="stat-value" id="koreanCount">0</p>
+                        <span class="stat-detail">한글만</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🇺🇸</div>
+                    <div class="stat-content">
+                        <h3>영문 문자</h3>
+                        <p class="stat-value" id="englishCount">0</p>
+                        <span class="stat-detail">영문만</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔢</div>
+                    <div class="stat-content">
+                        <h3>숫자</h3>
+                        <p class="stat-value" id="numberCount">0</p>
+                        <span class="stat-detail">0-9</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📏</div>
+                    <div class="stat-content">
+                        <h3>줄 수</h3>
+                        <p class="stat-value" id="lineCount">0</p>
+                        <span class="stat-detail">전체 라인</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-stats">
+                <h3>📊 상세 통계</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">평균 단어 길이:</span>
+                        <span class="detail-value" id="avgWordLength">0</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">평균 문장 길이:</span>
+                        <span class="detail-value" id="avgSentenceLength">0</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">한글 비율:</span>
+                        <span class="detail-value" id="koreanPercent">0%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">영문 비율:</span>
+                        <span class="detail-value" id="englishPercent">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

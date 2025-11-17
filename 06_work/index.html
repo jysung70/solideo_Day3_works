@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>암호화 유틸리티</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 암호화 유틸리티</h1>
+            <p>파일과 텍스트를 안전하게 암호화/복호화하세요</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 탭 메뉴 -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="text">텍스트 암호화</button>
+                <button class="tab-btn" data-tab="file">파일 암호화</button>
+                <button class="tab-btn" data-tab="batch">배치 처리</button>
+            </div>
+
+            <!-- 텍스트 암호화 탭 -->
+            <div class="tab-content active" id="text-tab">
+                <div class="input-section">
+                    <h2>텍스트 입력</h2>
+                    <textarea id="text-input" placeholder="암호화할 텍스트를 입력하세요..."></textarea>
+
+                    <div class="key-section">
+                        <label for="text-key">암호화 키:</label>
+                        <div class="key-input-group">
+                            <input type="password" id="text-key" placeholder="암호화 키를 입력하세요">
+                            <button class="btn-secondary" id="generate-text-key">키 생성</button>
+                            <button class="btn-icon" id="toggle-text-key">👁️</button>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" id="encrypt-text">암호화</button>
+                        <button class="btn-primary" id="decrypt-text">복호화</button>
+                        <button class="btn-secondary" id="clear-text">초기화</button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>결과</h2>
+                    <textarea id="text-output" readonly placeholder="결과가 여기에 표시됩니다..."></textarea>
+                    <button class="btn-secondary" id="copy-text">결과 복사</button>
+                </div>
+            </div>
+
+            <!-- 파일 암호화 탭 -->
+            <div class="tab-content" id="file-tab">
+                <div class="input-section">
+                    <h2>파일 선택</h2>
+                    <div class="file-upload">
+                        <input type="file" id="file-input" accept="*/*">
+                        <label for="file-input" class="file-label">
+                            <span id="file-name">파일을 선택하거나 드래그하세요</span>
+                        </label>
+                    </div>
+
+                    <div class="file-info" id="file-info" style="display: none;">
+                        <p><strong>파일명:</strong> <span id="info-name"></span></p>
+                        <p><strong>크기:</strong> <span id="info-size"></span></p>
+                        <p><strong>타입:</strong> <span id="info-type"></span></p>
+                    </div>
+
+                    <div class="key-section">
+                        <label for="file-key">암호화 키:</label>
+                        <div class="key-input-group">
+                            <input type="password" id="file-key" placeholder="암호화 키를 입력하세요">
+                            <button class="btn-secondary" id="generate-file-key">키 생성</button>
+                            <button class="btn-icon" id="toggle-file-key">👁️</button>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" id="encrypt-file">암호화</button>
+                        <button class="btn-primary" id="decrypt-file">복호화</button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>다운로드</h2>
+                    <div id="file-output" class="file-output">
+                        <p>암호화/복호화된 파일이 여기에 표시됩니다</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 배치 처리 탭 -->
+            <div class="tab-content" id="batch-tab">
+                <div class="input-section">
+                    <h2>여러 파일 선택</h2>
+                    <div class="file-upload">
+                        <input type="file" id="batch-input" accept="*/*" multiple>
+                        <label for="batch-input" class="file-label">
+                            <span id="batch-file-name">여러 파일을 선택하거나 드래그하세요</span>
+                        </label>
+                    </div>
+
+                    <div id="batch-file-list" class="batch-file-list"></div>
+
+                    <div class="key-section">
+                        <label for="batch-key">암호화 키:</label>
+                        <div class="key-input-group">
+                            <input type="password" id="batch-key" placeholder="암호화 키를 입력하세요">
+                            <button class="btn-secondary" id="generate-batch-key">키 생성</button>
+                            <button class="btn-icon" id="toggle-batch-key">👁️</button>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" id="encrypt-batch">전체 암호화</button>
+                        <button class="btn-primary" id="decrypt-batch">전체 복호화</button>
+                        <button class="btn-secondary" id="clear-batch">목록 초기화</button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>처리 결과</h2>
+                    <div id="batch-progress" class="batch-progress"></div>
+                    <div id="batch-output" class="batch-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 알림 메시지 -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

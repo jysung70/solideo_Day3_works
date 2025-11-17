@@ -1,0 +1,28 @@
+{
+  "backup_rules": {
+    "folders": ["documents", "data"],
+    "exclude_patterns": ["*.tmp", "*.cache", "temp_*"],
+    "schedule": "daily",
+    "retention_days": 30,
+    "compression": true
+  },
+  "file_organization": {
+    "rules": [
+      {
+        "pattern": "*.log",
+        "destination": "logs/archive/",
+        "older_than_days": 7
+      },
+      {
+        "pattern": "report_*.docx",
+        "destination": "documents/reports/",
+        "create_year_folders": true
+      }
+    ]
+  },
+  "cleanup": {
+    "delete_empty_folders": true,
+    "remove_duplicates": true,
+    "max_file_age_days": 360
+  }
+}

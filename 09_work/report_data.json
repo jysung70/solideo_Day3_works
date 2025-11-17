@@ -1,0 +1,48 @@
+﻿{
+  "title": "2024년 3분기 디지털 서비스 운영 현황",
+  "date": "2024-11-15",
+  "summary": {
+    "total_services": 156,
+    "new_services": 12,
+    "improved_services": 34,
+    "user_satisfaction": 4.2
+  },
+  "departments": [
+    {
+      "name": "행정안전부",
+      "services": 23,
+      "users": 1250000,
+      "satisfaction": 4.3,
+      "budget_used": 87.5
+    },
+    {
+      "name": "과학기술정보통신부",
+      "services": 18,
+      "users": 890000,
+      "satisfaction": 4.5,
+      "budget_used": 92.3
+    },
+    {
+      "name": "보건복지부",
+      "services": 31,
+      "users": 3450000,
+      "satisfaction": 3.9,
+      "budget_used": 78.4
+    }
+  ],
+  "monthly_stats": [
+    {"month": "7월", "users": 4500000, "services": 144},
+    {"month": "8월", "users": 4750000, "services": 148},
+    {"month": "9월", "users": 5100000, "services": 156}
+  ],
+  "issues": [
+    "서버 과부하 3차 발생",
+    "보안 업데이트 필요",
+    "모바일 최적화 개선 요구"
+  ],
+  "next_steps": [
+    "클라우드 인프라 확장",
+    "AI 챗봇 시범 도입",
+    "이용자 인증 UX 개선"
+  ]
+}

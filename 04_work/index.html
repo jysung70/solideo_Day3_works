@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 보안 검증 도구</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ 비밀번호 보안 검증 도구</h1>
+            <p class="subtitle">정부 보안 기준에 따른 비밀번호 강도 측정</p>
+        </header>
+
+        <main>
+            <div class="mode-selector">
+                <button class="mode-btn active" id="singleModeBtn">단일 검증</button>
+                <button class="mode-btn" id="batchModeBtn">파일 업로드</button>
+            </div>
+
+            <div class="input-section" id="singleMode">
+                <label for="password">비밀번호를 입력하세요:</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="비밀번호 입력">
+                    <button type="button" id="togglePassword" class="toggle-btn">👁️</button>
+                </div>
+            </div>
+
+            <div class="file-upload-section" id="batchMode" style="display: none;">
+                <label for="fileInput">비밀번호 파일을 업로드하세요 (.txt 파일, 한 줄에 하나씩):</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" accept=".txt" />
+                    <button type="button" id="uploadBtn" class="upload-btn">📁 파일 선택</button>
+                    <span id="fileName" class="file-name">선택된 파일 없음</span>
+                </div>
+                <button type="button" id="checkFileBtn" class="check-btn" style="display: none;">검증 시작</button>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="strength-meter">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+
+                <div class="score-display">
+                    <h2>보안 점수: <span id="scoreValue">0</span>/100</h2>
+                    <p class="strength-level" id="strengthLevel"></p>
+                </div>
+
+                <div class="criteria-list">
+                    <h3>검증 항목</h3>
+                    <ul id="criteriaList"></ul>
+                </div>
+
+                <div class="recommendations" id="recommendations">
+                    <h3>개선 방안</h3>
+                    <ul id="recommendationList"></ul>
+                </div>
+
+                <div class="security-tips">
+                    <h3>보안 팁</h3>
+                    <ul>
+                        <li>비밀번호는 최소 3개월마다 변경하세요</li>
+                        <li>여러 사이트에서 동일한 비밀번호를 사용하지 마세요</li>
+                        <li>개인정보(이름, 생년월일 등)를 포함하지 마세요</li>
+                        <li>비밀번호 관리자 사용을 고려하세요</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="batch-result-section" id="batchResultSection" style="display: none;">
+                <div class="batch-summary">
+                    <h2>파일 검증 결과</h2>
+                    <div class="summary-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalPasswords">0</div>
+                            <div class="stat-label">총 비밀번호</div>
+                        </div>
+                        <div class="stat-card strong">
+                            <div class="stat-value" id="strongCount">0</div>
+                            <div class="stat-label">매우 강함</div>
+                        </div>
+                        <div class="stat-card good">
+                            <div class="stat-value" id="goodCount">0</div>
+                            <div class="stat-label">좋음</div>
+                        </div>
+                        <div class="stat-card fair">
+                            <div class="stat-value" id="fairCount">0</div>
+                            <div class="stat-label">보통</div>
+                        </div>
+                        <div class="stat-card weak">
+                            <div class="stat-value" id="weakCount">0</div>
+                            <div class="stat-label">매우 약함</div>
+                        </div>
+                    </div>
+                    <div class="average-score">
+                        <h3>평균 보안 점수: <span id="averageScore">0</span>/100</h3>
+                    </div>
+                </div>
+
+                <div class="batch-details">
+                    <h3>상세 결과</h3>
+                    <div class="table-wrapper">
+                        <table id="resultTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>비밀번호</th>
+                                    <th>점수</th>
+                                    <th>강도</th>
+                                    <th>주요 문제점</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <button type="button" id="downloadReportBtn" class="download-btn">📥 결과 다운로드 (CSV)</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>정부 보안 기준 (KISA) 적용 | 입력된 비밀번호는 저장되지 않습니다</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+2024-11-15 09:00:12 INFO 192.168.1.100 LOGIN user=kim_cs status=SUCCESS
+2024-11-15 09:01:45 INFO 192.168.1.100 ACCESS resource=/admin/users status=200
+2024-11-15 09:05:23 WARNING 192.168.1.55 LOGIN user=unknown status=FAILED
+2024-11-15 09:05:45 WARNING 192.168.1.55 LOGIN user=admin status=FAILED
+2024-11-15 09:06:01 ERROR 192.168.1.55 LOGIN user=admin status=BLOCKED reason="3 failed attempts"
+2024-11-15 09:15:30 INFO 192.168.1.101 LOGIN user=lee_yh status=SUCCESS
+2024-11-15 09:16:45 INFO 192.168.1.101 ACCESS resource=/documents/report.pdf status=200
+2024-11-15 09:20:11 INFO 192.168.1.102 LOGIN user=park_ms status=SUCCESS
+2024-11-15 09:25:33 ERROR 192.168.1.103 ACCESS resource=/restricted/data status=403
+2024-11-15 09:30:45 INFO 192.168.1.100 LOGOUT user=kim_cs status=SUCCESS
+2024-11-15 09:35:12 WARNING 192.168.1.200 ACCESS resource=/api/export status=401
+2024-11-15 09:40:23 INFO 192.168.1.101 ACCESS resource=/public/notice status=200
+2024-11-15 09:45:55 ERROR 10.0.0.50 CONNECTION status=TIMEOUT
+2024-11-15 09:50:12 CRITICAL 192.168.1.1 SYSTEM message="Database connection lost"
+2024-11-15 09:51:00 INFO 192.168.1.1 SYSTEM message="Database reconnected"

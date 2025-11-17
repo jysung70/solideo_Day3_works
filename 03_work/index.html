@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 포맷 변환기 - CSV ↔ JSON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 데이터 포맷 변환기</h1>
+            <p class="subtitle">CSV와 JSON 간 양방향 변환 도구</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 변환 모드 선택 -->
+            <div class="mode-selector">
+                <button class="mode-btn active" id="csvToJsonBtn" onclick="switchMode('csvToJson')">
+                    CSV → JSON
+                </button>
+                <button class="mode-btn" id="jsonToCsvBtn" onclick="switchMode('jsonToCsv')">
+                    JSON → CSV
+                </button>
+            </div>
+
+            <!-- 입력 영역 -->
+            <div class="input-section">
+                <div class="section-header">
+                    <h2>입력 데이터</h2>
+                    <div class="button-group">
+                        <label for="fileInput" class="btn btn-secondary">
+                            📁 파일 선택
+                            <input type="file" id="fileInput" accept=".csv,.json" onchange="handleFileUpload(event)">
+                        </label>
+                        <button class="btn btn-secondary" onclick="loadSampleData()">📝 샘플 데이터</button>
+                        <button class="btn btn-danger" onclick="clearInput()">🗑️ 초기화</button>
+                    </div>
+                </div>
+                <textarea
+                    id="inputData"
+                    placeholder="여기에 데이터를 입력하거나 파일을 업로드하세요..."
+                    rows="12"
+                ></textarea>
+                <div class="info-box">
+                    <span id="inputInfo">입력 대기 중...</span>
+                </div>
+            </div>
+
+            <!-- 변환 옵션 -->
+            <div class="options-section">
+                <h3>변환 옵션</h3>
+                <div class="options-grid">
+                    <label class="option-item">
+                        <input type="checkbox" id="prettyPrint" checked>
+                        <span>JSON 포맷팅 (들여쓰기)</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" id="includeHeader" checked>
+                        <span>CSV 헤더 포함</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" id="supportNested" checked>
+                        <span>중첩 구조 지원</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" id="autoDetectTypes" checked>
+                        <span>자동 타입 감지</span>
+                    </label>
+                </div>
+                <div class="delimiter-section">
+                    <label>CSV 구분자:</label>
+                    <select id="delimiter">
+                        <option value=",">쉼표 (,)</option>
+                        <option value=";">세미콜론 (;)</option>
+                        <option value="\t">탭 (Tab)</option>
+                        <option value="|">파이프 (|)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 변환 버튼 -->
+            <div class="convert-section">
+                <button class="btn btn-primary btn-large" onclick="convertData()">
+                    🔄 변환하기
+                </button>
+            </div>
+
+            <!-- 출력 영역 -->
+            <div class="output-section">
+                <div class="section-header">
+                    <h2>변환 결과</h2>
+                    <div class="button-group">
+                        <button class="btn btn-success" onclick="copyToClipboard()">📋 복사</button>
+                        <button class="btn btn-success" onclick="downloadResult()">💾 다운로드</button>
+                    </div>
+                </div>
+                <textarea
+                    id="outputData"
+                    placeholder="변환 결과가 여기에 표시됩니다..."
+                    rows="12"
+                    readonly
+                ></textarea>
+                <div class="info-box success">
+                    <span id="outputInfo">변환 대기 중...</span>
+                </div>
+            </div>
+
+            <!-- 통계 정보 -->
+            <div class="stats-section" id="statsSection" style="display: none;">
+                <h3>변환 통계</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">처리 시간</span>
+                        <span class="stat-value" id="processingTime">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">데이터 행 수</span>
+                        <span class="stat-value" id="rowCount">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">컬럼 수</span>
+                        <span class="stat-value" id="columnCount">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">데이터 크기</span>
+                        <span class="stat-value" id="dataSize">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 Tip: 중첩된 JSON 객체는 점(.) 표기법으로 CSV 컬럼명으로 변환됩니다 (예: address.city)</p>
+            <p>한글 인코딩(UTF-8)을 완벽하게 지원합니다</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

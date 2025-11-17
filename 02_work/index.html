@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보 마스킹 시스템</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔒 개인정보 마스킹 시스템</h1>
+            <p class="subtitle">민감 정보를 자동으로 탐지하고 안전하게 처리합니다</p>
+        </header>
+
+        <main>
+            <!-- 파일 업로드 섹션 -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>텍스트 파일 업로드</h3>
+                    <p>파일을 드래그 앤 드롭하거나 클릭하여 선택하세요</p>
+                    <input type="file" id="fileInput" accept=".txt" hidden>
+                    <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                        파일 선택
+                    </button>
+                </div>
+            </section>
+
+            <!-- 또는 직접 입력 -->
+            <div class="divider">
+                <span>또는</span>
+            </div>
+
+            <!-- 텍스트 직접 입력 섹션 -->
+            <section class="text-input-section">
+                <h3>텍스트 직접 입력</h3>
+                <textarea
+                    id="inputText"
+                    placeholder="개인정보가 포함된 텍스트를 여기에 붙여넣으세요...&#10;예: 주민번호(123456-1234567), 전화번호(010-1234-5678), 이메일(example@email.com) 등"
+                    rows="10"
+                ></textarea>
+            </section>
+
+            <!-- 마스킹 옵션 -->
+            <section class="options-section">
+                <h3>마스킹 옵션</h3>
+                <div class="options-grid">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskSSN" checked>
+                        <span>주민등록번호</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskPhone" checked>
+                        <span>전화번호</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskEmail" checked>
+                        <span>이메일</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskCard" checked>
+                        <span>신용카드</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskAccount" checked>
+                        <span>계좌번호</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskPassport" checked>
+                        <span>여권번호</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskLicense" checked>
+                        <span>운전면허</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="maskBusiness" checked>
+                        <span>사업자등록번호</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- 실행 버튼 -->
+            <section class="action-section">
+                <button class="btn btn-large btn-process" id="processBtn" onclick="processMasking()">
+                    🔍 개인정보 탐지 및 마스킹
+                </button>
+            </section>
+
+            <!-- 결과 섹션 -->
+            <section class="result-section" id="resultSection" style="display: none;">
+                <div class="result-header">
+                    <h3>처리 결과</h3>
+                    <div class="detection-stats" id="detectionStats"></div>
+                </div>
+
+                <div class="result-panels">
+                    <div class="panel">
+                        <h4>원본 텍스트</h4>
+                        <div class="text-display" id="originalText"></div>
+                    </div>
+                    <div class="panel">
+                        <h4>마스킹된 텍스트</h4>
+                        <div class="text-display" id="maskedText"></div>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button class="btn btn-success" onclick="downloadMaskedText()">
+                        💾 마스킹된 파일 다운로드
+                    </button>
+                    <button class="btn btn-secondary" onclick="copyToClipboard()">
+                        📋 클립보드에 복사
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetForm()">
+                        🔄 초기화
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>⚠️ 이 시스템은 개인정보를 자동으로 탐지하고 마스킹 처리합니다. 처리된 파일을 안전하게 보관하세요.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
